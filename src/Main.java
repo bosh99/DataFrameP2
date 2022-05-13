@@ -4,7 +4,7 @@ import java.io.File;
 public class Main {
     public static void main(String[] args) {
         Dato[][] marcoDeDatos = new Dato[tamañoArchivo()][8];
-        for(int i = 0; i <= tamañoArchivo() ; i++) {
+        for(int i = 1; i <= tamañoArchivo() ; i++) {
             Dato d1 = new Dato(i);
             System.out.println(d1);
         }

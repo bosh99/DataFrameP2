@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Dato {
     private String estacion;
@@ -16,8 +15,8 @@ public class Dato {
     public Dato(int i) {
         ArrayList<String[]> datos = new ArrayList<String[]>();
         lecturaDeDatos(datos);
-
         try {
+
             this.estacion = datos.get(i)[0];
             this.nombre = datos.get(i)[1];
             this.pais = datos.get(i)[2];
@@ -26,8 +25,8 @@ public class Dato {
             this.tavg = datos.get(i)[5];
             this.tmax = datos.get(i)[6];
             this.tmin = datos.get(i)[7];
+
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
