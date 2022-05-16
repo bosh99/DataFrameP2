@@ -1,7 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.ArrayList;
-
 public class Dato {
     private String estacion;
     private String nombre;
@@ -12,49 +8,65 @@ public class Dato {
     private String tmax;
     private String tmin;
 
-    public Dato(int i) {
-        ArrayList<String[]> datos = new ArrayList<String[]>();
-        lecturaDeDatos(datos);
+
+    public Dato(String[] datos) {
+
         try {
-
-            this.estacion = datos.get(i)[0];
-            this.nombre = datos.get(i)[1];
-            this.pais = datos.get(i)[2];
-            this.fecha = datos.get(i)[3];
-            this.presipitacion = datos.get(i)[4];
-            this.tavg = datos.get(i)[5];
-            this.tmax = datos.get(i)[6];
-            this.tmin = datos.get(i)[7];
-
+            this.estacion = datos[0];
+            this.nombre = datos[1];
+            this.pais = datos[2];
+            this.fecha = datos[3];
+            this.presipitacion = datos.length >= 5 ? !datos[4].equals("") ? datos[4] : " 0.0 " : " 0.0 ";
+            this.tavg = datos.length >= 6 ? !datos[5].equals("") ? datos[5] : " 0.0 " : " 0.0 ";
+            this.tmax = datos.length >= 7 ? !datos[6].equals("") ? datos[6] : " 0.0 " : " 0.0 ";
+            this.tmin = datos.length >= 8 ? !datos[7].equals("") ? datos[7] : " 0.0 " : " 0.0 ";
         } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
+
+    public String getEstacion() {
+        return estacion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public String getPresipitacion() {
+        return presipitacion;
+    }
+
+    public String getTavg() {
+        return tavg;
+    }
+
+    public String getTmax() {
+        return tmax;
+    }
+
+    public String getTmin() {
+        return tmin;
     }
 
     @Override
     public String toString() {
-        return "Dato{" +
-                "estacion='" + estacion + ' ' +
-                ", nombre='" + nombre + ' ' +
-                ", pais='" + pais + ' ' +
-                ", fecha='" + fecha + ' ' +
-                ", presipitacion=" + presipitacion +
-                ", tavg=" + tavg +
-                ", tmax=" + tmax +
-                ", tmin=" + tmin +
-                '}';
-    }
-
-    public static void lecturaDeDatos(ArrayList<String[]> datos) {
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader("Medellin.csv"));
-            String line = null;
-            while((line = reader.readLine()) != null) {
-                String[] datosUsuario = line.split(",");
-                datos.add(datosUsuario);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        return
+                 estacion + ' ' +
+                 nombre + ' ' +
+                 pais + ' ' +
+                 fecha + ' ' +
+                 presipitacion + ' ' +
+                 tavg + ' ' +
+                 tmax + ' ' +
+                 tmin;
     }
 }
