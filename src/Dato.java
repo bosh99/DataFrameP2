@@ -1,3 +1,10 @@
+/**
+ * Esta clase se encarga representar todos los elementos de un dato
+ * @author Esteban Muriel Roldan
+ * @author Miguel Vasquez Bojanini
+ * @author Manuel Villegas Michel
+ */
+
 public class Dato {
     private String estacion;
     private String nombre;
@@ -8,7 +15,10 @@ public class Dato {
     private String tmax;
     private String tmin;
 
-
+    /**
+     * Constructor que recibe un arreglo de datos y hace que a cada atributo se le asigne el valor correspondiente
+     * @param datos un arreglo de Strings con los datos leidos del archivo
+     */
     public Dato(String[] datos) {
 
         try {
@@ -25,38 +35,66 @@ public class Dato {
         }
     }
 
+    /**
+     * @return la estacion
+     */
     public String getEstacion() {
         return estacion;
     }
 
+    /**
+     * @return el nombre
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * @return el pais
+     */
     public String getPais() {
         return pais;
     }
 
+    /**
+     * @return la fecha
+     */
     public String getFecha() {
         return fecha;
     }
 
+    /**
+     * @return la precipitacion
+     */
     public String getPresipitacion() {
         return presipitacion;
     }
 
+    /**
+     * @return la temperatura promedio
+     */
     public String getTavg() {
         return tavg;
     }
 
+    /**
+     * @return la temperatura maxima
+     */
     public String getTmax() {
         return tmax;
     }
 
+    /**
+     * @return la temperatura minima
+     */
     public String getTmin() {
         return tmin;
     }
 
+    /**
+     * El metodo toString predeterminado del objeto dato
+     * @return todos los datos del objeto en forma de String
+     */
     @Override
     public String toString() {
         return

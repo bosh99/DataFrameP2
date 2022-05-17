@@ -21,10 +21,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Procesando... Por favor espere." + "\n");
-        String[][] marcoDeDatos = new String[tamañoArchivo()][8];
+        String[][] marcoDeDatos = new String[tamanioArchivo()][8];
         ArrayList<String[]> datos = new ArrayList<String[]>();
         lecturaDeDatos(datos);
-        for(int i = 0; i < tamañoArchivo() ; i++) {
+        for(int i = 0; i < tamanioArchivo() ; i++) {
             Dato d1 = new Dato(datos.get(i));
             marcoDeDatos[i][0] = d1.getEstacion();
             marcoDeDatos[i][1] = d1.getNombre();
@@ -158,7 +158,7 @@ public class Main {
             }
 
     /**
-     *
+     * Se encarga de imprimir la matriz con los datos del archivo sin ninguna modificacion
      * @param marcoDeDatos es la matriz con los datos del archivo.csv
      */
     public static void imprimirMatriz(String[][] marcoDeDatos) {
@@ -172,22 +172,31 @@ public class Main {
         System.out.println("\n"+"Los datos que no encontrados se reemplazaron con 0");
     }
 
-    public static int tamañoArchivo() {
-        int tamaño=0;
+    /**
+     * Se encarga de analizar cuantas lineas tiene el archivo.csv
+     * @return retorna un entero que representa las lineas del tamanio total del archivo
+     */
+
+    public static int tamanioArchivo() {
+        int tamanio=0;
         try {
             File file = new File("1719435.csv");
             Scanner scan = new Scanner(file);
             String line;
             while(scan.hasNextLine()) {
                 line = scan.nextLine();
-                tamaño++;
+                tamanio++;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return tamaño;
+        return tamanio;
     }
 
+    /**
+     * se encarga de leer el archivo en su totalidad y separar las palabras por comas y aniadirlas al ArrayList datos
+     * @param datos es un ArrayList donde se van a almacenar los datos del achivo independientes
+     */
     public static void lecturaDeDatos(ArrayList<String[]> datos) {
         BufferedReader reader = null;
         try {
