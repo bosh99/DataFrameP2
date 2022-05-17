@@ -3,8 +3,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Datos climaticos de San Fransisco Downtown (2000 - 2019)");
+        System.out.println("Procesando... Por favor espere.");
         String[][] marcoDeDatos = new String[tamañoArchivo()][8];
         ArrayList<String[]> datos = new ArrayList<String[]>();
         lecturaDeDatos(datos);
@@ -20,17 +23,30 @@ public class Main {
             marcoDeDatos[i][6] = d1.getTmax();
             marcoDeDatos[i][7] = d1.getTmin();
         }
-        System.out.println("STATION " + " NAME "+" DATE "+" PRCP "+" TAVG "+" TMAX "+" TMIN");
+
+        /*
+        IMPRIMIR MATRIZ
         imprimirMatriz(marcoDeDatos);
+        */
+
+        /*
+        PROMEDIOS
+        System.out.println("El promedio total de precipitaciones es: " + Operaciones.promedioPrcp(marcoDeDatos)+ "\n"
+                + "El promedio total de la temperatura promedio es: " + Operaciones.promedioTavg(marcoDeDatos)+"°C"+ "\n"
+                + "El promedio total de la temperatura maxima es: " + Operaciones.promedioTmax(marcoDeDatos)+"°C"+ "\n"
+                + "El promedio total de la temperatura minima es: " + Operaciones.promedioTmin(marcoDeDatos)+"°C");
+         */
     }
 
     public static void imprimirMatriz(String[][] marcoDeDatos) {
+        System.out.println("STATION " + " NAME "+" DATE "+" PRCP "+" TAVG "+" TMAX "+" TMIN");
         for(int i = 0; i < marcoDeDatos.length; i++) {
             for(int j = 0; j < marcoDeDatos[i].length; j++) {
                 System.out.print(marcoDeDatos[i][j] + " ");
             }
             System.out.println();
         }
+        System.out.println("\n"+"Los datos que no encontrados se reemplazaron con 0");
     }
 
     public static int tamañoArchivo() {
