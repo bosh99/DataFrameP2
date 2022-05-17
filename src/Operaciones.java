@@ -1,4 +1,5 @@
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 public class Operaciones {
 
@@ -120,7 +121,7 @@ public class Operaciones {
         }
         return menor;
     }
-
+/*
 // La moda de demora 3 dias en ejecutarse
     public static void modaPrcp(String[][] marcoDeDatos) {
         int maximoNumRepeticiones = 0;
@@ -140,6 +141,13 @@ public class Operaciones {
         }
         System.out.println("La moda es:" + moda);
     }
+
+ */
+
+    public static String[][] ordenarMayorMenorPrcp(String[][] marcoDeDatos){
+        
+    }
+
 
 
 }
