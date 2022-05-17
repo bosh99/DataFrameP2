@@ -40,7 +40,6 @@ public class Operaciones {
     }
 
     public static double mayorPrcp(String[][] marcoDeDatos){
-        DecimalFormat formato = new DecimalFormat("#.##");
         double mayor = 0;
         for (int i = 0; i < Main.tamañoArchivo(); i++){
             if (Double.parseDouble(marcoDeDatos[i][4]) > mayor){
@@ -51,7 +50,6 @@ public class Operaciones {
     }
 
     public static double mayorTavg(String[][] marcoDeDatos){
-        DecimalFormat formato = new DecimalFormat("#.##");
         double mayor = 0;
         for (int i = 0; i < Main.tamañoArchivo(); i++){
             if (Double.parseDouble(marcoDeDatos[i][5]) > mayor){
@@ -145,7 +143,7 @@ public class Operaciones {
  */
 
     public static String[][] ordenarMayorMenorPrcp(String[][] marcoDeDatos){
-        
+
     }
 
 
