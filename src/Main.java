@@ -36,6 +36,31 @@ public class Main {
                 + "El promedio total de la temperatura maxima es: " + Operaciones.promedioTmax(marcoDeDatos)+"°C"+ "\n"
                 + "El promedio total de la temperatura minima es: " + Operaciones.promedioTmin(marcoDeDatos)+"°C");
          */
+        /*
+        //NUMERO MAXIMOS
+        System.out.println("El mayor numero de precipitaciones es: " + Operaciones.mayorPrcp(marcoDeDatos)+ "\n"
+                + "La mayor cifra de temperatura promedio es: " + Operaciones.mayorTavg(marcoDeDatos)+"°C"+ "\n"
+                + "La mayor cifra de temperatura maxima es: " + Operaciones.mayorTmax(marcoDeDatos)+"°C"+ "\n"
+                + "La mayor cifra de temperatura minima es: " + Operaciones.mayorTmin(marcoDeDatos)+"°C");
+
+         */
+
+
+
+        /*
+        //NUMERO MINIMOS
+        System.out.println("El menor numero de precipitaciones es: " + Operaciones.menorPrcp(marcoDeDatos)+ "\n"
+                + "La menor cifra de temperatura promedio es: " + Operaciones.menorTavg(marcoDeDatos)+"°C"+ "\n"
+                + "La menor cifra de temperatura maxima es: " + Operaciones.menorTmax(marcoDeDatos)+"°C"+ "\n"
+                + "La menor cifra de temperatura minima es: " + Operaciones.menorTmin(marcoDeDatos)+"°C");
+
+         */
+
+
+
+
+
+
     }
 
     public static void imprimirMatriz(String[][] marcoDeDatos) {
