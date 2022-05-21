@@ -20,10 +20,10 @@ public class Operaciones {
     public static String promedio(String[][] marcoDeDatos, int columna){
         DecimalFormat formato = new DecimalFormat("#.##");
         double total = 0;
-        for(int i = 0; i < Main.tamanioArchivo(); i++) {
+        for(int i = 0; i < MarcoDato.tamanioArchivo(); i++) {
             total += Double.parseDouble(marcoDeDatos[i][columna]);
         }
-        return formato.format(total/Main.tamanioArchivo());
+        return formato.format(total/MarcoDato.tamanioArchivo());
     }
 
     /**
@@ -35,7 +35,7 @@ public class Operaciones {
 
     public static double mayor(String[][] marcoDeDatos, int columna){
         double mayor = 0;
-        for (int i = 0; i < Main.tamanioArchivo(); i++){
+        for (int i = 0; i < MarcoDato.tamanioArchivo(); i++){
             if (Double.parseDouble(marcoDeDatos[i][columna]) > mayor){
                 mayor = Double.parseDouble(marcoDeDatos[i][columna]);
             }
@@ -52,7 +52,7 @@ public class Operaciones {
 
     public static double menor(String[][] marcoDeDatos, int columnas){
         double menor = Double.MAX_VALUE;
-        for (int i = 0; i < Main.tamanioArchivo(); i++){
+        for (int i = 0; i < MarcoDato.tamanioArchivo(); i++){
             if (Double.parseDouble(marcoDeDatos[i][columnas]) < menor && Double.parseDouble(marcoDeDatos[i][columnas]) != 0.0){
                 menor = Double.parseDouble(marcoDeDatos[i][columnas]);
             }
@@ -63,6 +63,8 @@ public class Operaciones {
 
 /*
 // La moda de demora 3 dias en ejecutarse
+
+Crear un arreglo de numeros y por cada uno de ellos un contador, hacer solo un ciclo y que aumente por cada vez que la encuentre
 
     public static void modaPrcp(String[][] marcoDeDatos) {
         int maximoNumRepeticiones = 0;
@@ -93,7 +95,7 @@ public class Operaciones {
      */
     public static String[][] ordenarMenorMayor(String[][] marcoDeDatos, int orderBy){
         String[] temp = new String[7];
-        for(int i = 0; i < Main.tamanioArchivo(); i++){
+        for(int i = 0; i < MarcoDato.tamanioArchivo(); i++){
             int pos = i;
             temp = marcoDeDatos[i];
             while((pos > 0) && (Double.parseDouble(marcoDeDatos[pos-1][orderBy]) > Double.parseDouble(temp[orderBy]))){
@@ -115,7 +117,7 @@ public class Operaciones {
 
     public static String[][] ordenarMayorMenor(String[][] marcoDeDatos, int orderBy){
         String[] temp = new String[7];
-        for(int i = 0; i < Main.tamanioArchivo(); i++){
+        for(int i = 0; i < MarcoDato.tamanioArchivo(); i++){
             int pos = i;
             temp = marcoDeDatos[i];
             while((pos > 0) && (Double.parseDouble(marcoDeDatos[pos-1][orderBy]) < Double.parseDouble(temp[orderBy]))){
@@ -126,6 +128,26 @@ public class Operaciones {
 
         }
         return marcoDeDatos;
+    }
+
+    public static double desEstandar (String [][] marcoDeDatos , int OrderBy) {
+        double desviacion = 0;
+        String promedio = Operaciones.promedio(marcoDeDatos, OrderBy).replace(",",".");
+        try {
+            double promPrc = Double.parseDouble(promedio);
+            double sumaResto = 0.0;
+
+            for (int i = 0; i < MarcoDato.tamanioArchivo(); i++) {
+                sumaResto += Double.parseDouble(marcoDeDatos[i][OrderBy]) - promPrc;
+            }
+
+            double cuadrado = Math.pow(sumaResto, 2);
+            desviacion =  cuadrado / 7046;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return desviacion;
     }
 
 }

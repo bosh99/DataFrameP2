@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,10 +18,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Procesando... Por favor espere." + "\n");
-        String[][] marcoDeDatos = new String[tamanioArchivo()][8];
+        String[][] marcoDeDatos = new String[MarcoDato.tamanioArchivo()][8];
         ArrayList<String[]> datos = new ArrayList<String[]>();
-        lecturaDeDatos(datos);
-        for(int i = 0; i < tamanioArchivo() ; i++) {
+        MarcoDato.lecturaDeDatos(datos);
+        for(int i = 0; i < MarcoDato.tamanioArchivo() ; i++) {
             Dato d1 = new Dato(datos.get(i));
             marcoDeDatos[i][0] = d1.getEstacion();
             marcoDeDatos[i][1] = d1.getNombre();
@@ -52,6 +49,7 @@ public class Main {
        System.out.println("| Digite [4] para mostrar los minimos de cada medida climatica                |");
        System.out.println("| Digite [5] Para ordenar la lista de menor a mayor                           |");
        System.out.println("| Digite [6] Para ordenar la lista de mayor a menor                           |");
+       System.out.println("| Digite [7] Para mostrar la desviacion estandar de cada dato                 |");
        System.out.println("------------------------------------------------------------------------------");
      }
 
@@ -71,7 +69,7 @@ public class Main {
                     if (opcion != 0){
                         switch (opcion){
                             case 1:{
-                                imprimirMatriz(marcoDeDatos);
+                                MarcoDato.imprimirMatriz(marcoDeDatos);
                                 break;
                             }
                             case 2:{
@@ -105,19 +103,19 @@ public class Main {
                                 System.out.println("Procesando... Por favor espere." + "\n");
                                 switch (opcion){
                                     case 1:{
-                                        imprimirMatriz(Operaciones.ordenarMenorMayor(marcoDeDatos,4));
+                                        MarcoDato.imprimirMatriz(Operaciones.ordenarMenorMayor(marcoDeDatos,4));
                                         break;
                                     }
                                     case 2:{
-                                        imprimirMatriz(Operaciones.ordenarMenorMayor(marcoDeDatos,5));
+                                        MarcoDato.imprimirMatriz(Operaciones.ordenarMenorMayor(marcoDeDatos,5));
                                         break;
                                     }
                                     case 3:{
-                                        imprimirMatriz(Operaciones.ordenarMenorMayor(marcoDeDatos,6));
+                                        MarcoDato.imprimirMatriz(Operaciones.ordenarMenorMayor(marcoDeDatos,6));
                                         break;
                                     }
                                     case 4:{
-                                        imprimirMatriz(Operaciones.ordenarMenorMayor(marcoDeDatos,7));
+                                        MarcoDato.imprimirMatriz(Operaciones.ordenarMenorMayor(marcoDeDatos,7));
                                         break;
                                     }
                                 }
@@ -130,24 +128,32 @@ public class Main {
                                 System.out.println("Procesando... Por favor espere." + "\n");
                                 switch (opcion){
                                     case 1:{
-                                        imprimirMatriz(Operaciones.ordenarMayorMenor(marcoDeDatos,4));
+                                        MarcoDato.imprimirMatriz(Operaciones.ordenarMayorMenor(marcoDeDatos,4));
                                         break;
                                     }
                                     case 2:{
-                                        imprimirMatriz(Operaciones.ordenarMayorMenor(marcoDeDatos,5));
+                                        MarcoDato.imprimirMatriz(Operaciones.ordenarMayorMenor(marcoDeDatos,5));
                                         break;
                                     }
                                     case 3:{
-                                        imprimirMatriz(Operaciones.ordenarMayorMenor(marcoDeDatos,6));
+                                        MarcoDato.imprimirMatriz(Operaciones.ordenarMayorMenor(marcoDeDatos,6));
                                         break;
                                     }
                                     case 4:{
-                                        imprimirMatriz(Operaciones.ordenarMayorMenor(marcoDeDatos,7));
+                                        MarcoDato.imprimirMatriz(Operaciones.ordenarMayorMenor(marcoDeDatos,7));
                                         break;
                                     }
                                 }
+                                break;
                             }
-                            break;
+                            case 7: {
+                                System.out.println("Procesando... Por favor espere." + "\n");
+                                System.out.println("La desviacion estandar de precipitaciones es: " + Operaciones.desEstandar(marcoDeDatos,4)+ "\n"
+                                + "La desviacion estandar de la temperatura promedio es: " + Operaciones.desEstandar(marcoDeDatos,5)+ "\n"
+                                + "La desviacion estandar de la temperatura maxima es: " + Operaciones.desEstandar(marcoDeDatos,6)+ "\n"
+                                + "La desviacion estandar de la temperatura minima es: " + Operaciones.desEstandar(marcoDeDatos,7));
+                                break;
+                            }
                         }
                     }
                     else{
@@ -155,59 +161,5 @@ public class Main {
                         break;
                     }
                 }
-            }
-
-    /**
-     * Se encarga de imprimir la matriz con los datos del archivo sin ninguna modificacion
-     * @param marcoDeDatos es la matriz con los datos del archivo.csv
-     */
-    public static void imprimirMatriz(String[][] marcoDeDatos) {
-        System.out.println("STATION " + " NAME "+" DATE "+" PRCP "+" TAVG "+" TMAX "+" TMIN");
-        for(int i = 0; i < marcoDeDatos.length; i++) {
-            for(int j = 0; j < marcoDeDatos[i].length; j++) {
-                System.out.print(marcoDeDatos[i][j] + " ");
-            }
-            System.out.println();
         }
-        System.out.println("\n"+"Los datos que no encontrados se reemplazaron con 0");
-    }
-
-    /**
-     * Se encarga de analizar cuantas lineas tiene el archivo.csv
-     * @return retorna un entero que representa las lineas del tamanio total del archivo
-     */
-
-    public static int tamanioArchivo() {
-        int tamanio=0;
-        try {
-            File file = new File("1719435.csv");
-            Scanner scan = new Scanner(file);
-            String line;
-            while(scan.hasNextLine()) {
-                line = scan.nextLine();
-                tamanio++;
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return tamanio;
-    }
-
-    /**
-     * se encarga de leer el archivo en su totalidad y separar las palabras por comas y aniadirlas al ArrayList datos
-     * @param datos es un ArrayList donde se van a almacenar los datos del achivo independientes
-     */
-    public static void lecturaDeDatos(ArrayList<String[]> datos) {
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader("1719435.csv"));
-            String line = null;
-            while((line = reader.readLine()) != null) {
-                String[] datosFile = line.split(",");
-                datos.add(datosFile);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }
