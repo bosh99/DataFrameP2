@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -66,5 +64,51 @@ public class MarcoDato {
             System.out.println();
         }
         System.out.println("\n"+"Los datos que no encontrados se reemplazaron con 0");
+    }
+
+    /**
+     * Se encarga de generar un archivo .txt con las respuestas de los promedios, los maximos y minimos.
+     * @param marcoDeDatos es la matriz con los datos del archivo.csv
+     */
+
+    public static void archivoRespuestas(String[][] marcoDeDatos){
+
+
+        File f = new File("Resultados.txt");
+        FileWriter datos = null;
+        PrintWriter pw = null;
+
+
+        if (!f.exists()) {
+            try{
+                f.createNewFile();
+            }catch(IOException exception){
+                System.err.println("Error creating the file");
+            }
+        }
+
+        try {
+            datos = new FileWriter("Resultados.txt"); //true
+            pw = new PrintWriter(datos);
+            pw.println("RESULTADOS: " + "\n");
+            pw.println("PROMEDIOS: ");
+            pw.println("El promedio total de precipitaciones es: " + Operaciones.promedio(marcoDeDatos,4)+ "°C"+ "\n"
+                    + "El promedio total de la temperatura promedio es: " + Operaciones.promedio(marcoDeDatos,5)+"°C"+ "\n"
+                    + "El promedio total de la temperatura maxima es: " + Operaciones.promedio(marcoDeDatos,6)+"°C"+ "\n"
+                    + "El promedio total de la temperatura minima es: " + Operaciones.promedio(marcoDeDatos,7)+"°C" + "\n");
+            pw.println("NUMERO MAYOR: ");
+            pw.println("El mayor numero de precipitaciones es: " + Operaciones.mayor(marcoDeDatos,4)+ "°C"+"\n"
+                    + "La mayor cifra de temperatura promedio es: " + Operaciones.mayor(marcoDeDatos, 5)+"°C"+ "\n"
+                    + "La mayor cifra de temperatura maxima es: " + Operaciones.mayor(marcoDeDatos, 6)+"°C"+ "\n"
+                    + "La mayor cifra de temperatura minima es: " + Operaciones.mayor(marcoDeDatos, 7)+"°C"+ "\n");
+            pw.println("NUMERO MENOR: ");
+            pw.println("El menor numero de precipitaciones es: " + Operaciones.menor(marcoDeDatos, 4)+ "°C"+ "\n"
+                    + "La menor cifra de temperatura promedio es: " + Operaciones.menor(marcoDeDatos, 5)+"°C"+ "\n"
+                    + "La menor cifra de temperatura maxima es: " + Operaciones.menor(marcoDeDatos, 6)+"°C"+ "\n"
+                    + "La menor cifra de temperatura minima es: " + Operaciones.menor(marcoDeDatos, 7)+"°C");
+            datos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

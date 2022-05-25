@@ -1,0 +1,19 @@
+RESULTADOS:
+
+PROMEDIOS:
+El promedio total de precipitaciones es: 1,59°C
+El promedio total de la temperatura promedio es: 1,97°C
+El promedio total de la temperatura maxima es: 17,83°C
+El promedio total de la temperatura minima es: 10,75°C
+
+NUMERO MAYOR:
+El mayor numero de precipitaciones es: 86.4°C
+La mayor cifra de temperatura promedio es: 30.0°C
+La mayor cifra de temperatura maxima es: 41.1°C
+La mayor cifra de temperatura minima es: 23.9°C
+
+NUMERO MENOR:
+El menor numero de precipitaciones es: 0.3°C
+La menor cifra de temperatura promedio es: 5.0°C
+La menor cifra de temperatura maxima es: 6.7°C
+La menor cifra de temperatura minima es: 2.2°C

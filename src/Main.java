@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -50,6 +50,7 @@ public class Main {
        System.out.println("| Digite [5] Para ordenar la lista de menor a mayor                           |");
        System.out.println("| Digite [6] Para ordenar la lista de mayor a menor                           |");
        System.out.println("| Digite [7] Para mostrar la desviacion estandar de cada dato                 |");
+       System.out.println("| Digite [8] Para crear un archivo con todos los datos                        |");
        System.out.println("------------------------------------------------------------------------------");
      }
 
@@ -152,6 +153,12 @@ public class Main {
                                 + "La desviacion estandar de la temperatura promedio es: " + Operaciones.desEstandar(marcoDeDatos,5)+ "\n"
                                 + "La desviacion estandar de la temperatura maxima es: " + Operaciones.desEstandar(marcoDeDatos,6)+ "\n"
                                 + "La desviacion estandar de la temperatura minima es: " + Operaciones.desEstandar(marcoDeDatos,7));
+                                break;
+                            }
+                            case 8: {
+                                System.out.println("Generando archivo... Por favor espere.");
+                                MarcoDato.archivoRespuestas(marcoDeDatos);
+                                System.out.println("Archivo generado.");
                                 break;
                             }
                         }

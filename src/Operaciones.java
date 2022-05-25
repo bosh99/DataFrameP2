@@ -60,33 +60,6 @@ public class Operaciones {
         return menor;
     }
 
-
-/*
-// La moda de demora 3 dias en ejecutarse
-
-Crear un arreglo de numeros y por cada uno de ellos un contador, hacer solo un ciclo y que aumente por cada vez que la encuentre
-
-    public static void modaPrcp(String[][] marcoDeDatos) {
-        int maximoNumRepeticiones = 0;
-        String moda = "";
-
-        for(int i = 0; i < Main.tamanioArchivo(); i++) {
-            int numRepeticiones = 0;
-
-            for(int j = 0; j < Main.tamanioArchivo(); j++)
-                if(marcoDeDatos[i][4].equals(marcoDeDatos[j][4])){
-                    numRepeticiones++;
-                }
-                if(numRepeticiones>maximoNumRepeticiones) {
-                    moda = marcoDeDatos[i][4];
-                    maximoNumRepeticiones= numRepeticiones;
-                }
-        }
-        System.out.println("La moda es:" + moda);
-    }
-
- */
-
     /**
      * Se encarga de ordenar la matriz de menor a mayor bajo el ordenamiento por insercion, segun el parametro seleccionado
      * @param marcoDeDatos Recibe la matriz marco de datos con toda la informacion del archivo.csv
@@ -130,6 +103,13 @@ Crear un arreglo de numeros y por cada uno de ellos un contador, hacer solo un c
         return marcoDeDatos;
     }
 
+    /**
+     * Este metodo nos permite absabeair cual es la dispersion media de la variable donde se aplica.
+     * @param marcoDeDatos Recibe la matriz marco de datos con toda la informacion del archivo.csv 
+     * @param OrderBy  Sirve para saber sobre que columna de la matriz se va aplicar la desviacion estandar
+     * @return El valor de la desviacion estandar del dato correspondiente.
+     */
+
     public static double desEstandar (String [][] marcoDeDatos , int OrderBy) {
         double desviacion = 0;
         String promedio = Operaciones.promedio(marcoDeDatos, OrderBy).replace(",",".");
@@ -142,7 +122,7 @@ Crear un arreglo de numeros y por cada uno de ellos un contador, hacer solo un c
             }
 
             double cuadrado = Math.pow(sumaResto, 2);
-            desviacion =  cuadrado / 7046;
+            desviacion =  cuadrado / (MarcoDato.tamanioArchivo() -1);
 
         } catch (Exception e) {
             e.printStackTrace();
